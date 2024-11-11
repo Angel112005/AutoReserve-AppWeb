@@ -1,0 +1,39 @@
+<div class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+  <div class="bg-black text-white rounded-lg p-8 max-w-md w-full shadow-lg">
+    <h2 class="text-2xl font-bold mb-6 text-center">ESPECIFICACIONES DEL AUTO</h2>
+
+    <label class="block mb-2 text-sm">Nueva Matrícula (Placas):</label>
+    <input
+      [(ngModel)]="car.Matricula"
+      placeholder="Placas del vehículo..."
+      class="w-full px-4 py-2 mb-4 text-black rounded border border-gray-400 focus:outline-none focus:ring focus:ring-yellow-500"
+      type="text">
+
+    <label class="block mb-2 text-sm">Nuevo Año:</label>
+    <input
+      [(ngModel)]="car.Generacion"
+      placeholder="Año del vehículo..."
+      class="w-full px-4 py-2 mb-4 text-black rounded border border-gray-400 focus:outline-none focus:ring focus:ring-yellow-500"
+      type="number">
+
+    <label class="block mb-2 text-sm">Nuevo Costo por Día:</label>
+    <input
+      [(ngModel)]="car.CostoXDia"
+      placeholder="Ingrese una cantidad..."
+      class="w-full px-4 py-2 mb-6 text-black rounded border border-gray-400 focus:outline-none focus:ring focus:ring-yellow-500"
+      type="number">
+
+    <div class="flex justify-center space-x-4">
+      <button
+        (click)="saveChanges()"
+        class="px-6 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition">
+        GUARDAR CAMBIOS
+      </button>
+      <button
+        (click)="cancel()"
+        class="px-6 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition">
+        CERRAR
+      </button>
+    </div>
+  </div>
+</div>

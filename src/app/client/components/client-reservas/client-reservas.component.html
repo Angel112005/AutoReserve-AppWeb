@@ -1,0 +1,102 @@
+<div class="container mx-auto px-4 py-8">
+  <!-- <h1 class="text-4xl font-bold text-center mb-8">RESERVACIONES</h1> -->
+
+  <div class="flex justify-between items-center mb-8">
+    <!-- <h1 class="text-4xl font-bold">AUTOS DISPONIBLES</h1> -->
+    <div class="flex space-x-4">
+      <button
+      class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+      (click)="navigateToHome()">
+      INICIO
+      </button>
+      <button
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+        (click)="navigateTo('mis-reservas')">
+        MIS RESERVAS
+      </button>
+      <button
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+        (click)="navigateTo('historial')">
+        HISTORIAL
+      </button>
+    </div>
+  </div>
+
+  <h1 class="text-4xl font-bold text-center mb-8">RESERVACIONES</h1>
+
+
+  <div *ngIf="reservasCliente.length === 0" class="text-center text-gray-500">
+    <p>No tienes reservas de coches disponibles.</p>
+  </div>
+
+  <div class="space-y-6">
+    <div *ngFor="let reserva of reservasCliente" class="bg-white rounded-lg shadow-lg p-6 border border-gray-300">
+      <div class="grid grid-cols-4 gap-4">
+
+        <!-- Datos del Coche -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2 text-center">DATOS DEL COCHE</h2>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Marca:</strong> {{ reserva.Marca }}</li>
+            <li><strong>Modelo:</strong> {{ reserva.Modelo }}</li>
+            <li><strong>Año:</strong> {{ reserva.Generacion }}</li>
+            <li><strong>Tipo:</strong> {{ reserva.Tipo }}</li>
+            <li><strong>Transmisión:</strong> {{ reserva.Transmision }}</li>
+          </ul>
+        </div>
+
+        <!-- Estado de la Reserva -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2 text-center">ESTADO</h2>
+          <p class="text-gray-700 text-center">En espera de aprobación...</p>
+        </div>
+
+        <!-- Información de la Reserva -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2 text-center">INFORMACIÓN</h2>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Total a Pagar:</strong> {{ reserva.PagoTotal | currency }}</li>
+            <li><strong>Duración de la Renta:</strong></li>
+            <li>Inicio: {{ reserva.FechaInicio }}</li>
+            <li>Fin: {{ reserva.FechaFin }}</li>
+          </ul>
+        </div>
+
+        <!-- Acciones -->
+        <div class="flex flex-col items-center justify-center space-y-4">
+          <h2 class="text-lg font-semibold mb-2 text-center">ACCIONES</h2>
+          <button
+            (click)="openEditModal(reserva)"
+            class="px-6 py-2 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-700 flex items-center">
+            <span>✏️</span> <span class="ml-2">Editar. . .</span>
+          </button>
+          <button
+            (click)="cancelarReserva(reserva.ID_Reservas, reserva.ID_Carro)"
+            class="px-6 py-2 bg-gray-400 text-white rounded-full font-semibold hover:bg-gray-500 flex items-center">
+            <span>❌</span> <span class="ml-2">Cancelar</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    <!-- Modal de Edición -->
+    <div *ngIf="selectedReserva" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div class="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 class="text-2xl font-bold mb-6">EDITAR DATOS DE LA RESERVA</h2>
+        <div class="mb-4">
+          <label for="startDate" class="block text-lg font-medium">Inicio:</label>
+          <input type="date" id="startDate" [(ngModel)]="newStartDate" (change)="calculateTotalCost()" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+        <div class="mb-4">
+          <label for="endDate" class="block text-lg font-medium">Fin:</label>
+          <input type="date" id="endDate" [(ngModel)]="newEndDate" (change)="calculateTotalCost()" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+        </div>
+        <p class="text-lg font-semibold mb-6">Nuevo Total a Pagar: {{ newTotalCost | currency }}</p>
+        <div class="flex justify-between">
+          <button (click)="saveChanges()" class="px-6 py-2 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800">Guardar Cambios</button>
+          <button (click)="closeModal()" class="px-6 py-2 bg-gray-400 text-white rounded-full font-semibold hover:bg-gray-500">Cancelar</button>
+        </div>
+      </div>
+    </div>
+</div>

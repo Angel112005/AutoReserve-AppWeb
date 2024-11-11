@@ -1,0 +1,31 @@
+/* src/app/client/components/client-dashboard/client-dashboard.component.css */
+.dashboard-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.car-card {
+  width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.car-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.car-card p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}

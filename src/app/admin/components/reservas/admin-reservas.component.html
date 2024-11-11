@@ -1,0 +1,72 @@
+<div class="container mx-auto px-4 py-8">
+
+  <div class="flex justify-between items-center mb-8">
+    <div class="flex space-x-4">
+      <button
+      class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+      (click)="navigateToHome()">
+      INICIO
+      </button>
+    </div>
+  </div>
+
+  <h1 class="text-4xl font-bold text-center mb-8">RESERVAS DE CLIENTES</h1>
+
+  <div class="space-y-6">
+    <div *ngFor="let reserva of reservasAdmin" class="bg-white rounded-lg shadow-lg p-6 border border-gray-300">
+      <div class="grid grid-cols-4 gap-4">
+
+        <!-- Datos del Coche -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2">DATOS DEL COCHE</h2>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Marca:</strong> {{ reserva.Marca }}</li>
+            <li><strong>Modelo:</strong> {{ reserva.Modelo }}</li>
+            <!-- <li><strong>Año:</strong> {{ reserva.Generacion }}</li>
+            <li><strong>Tipo:</strong> {{ reserva.Tipo }}</li>
+            <li><strong>Pasajeros:</strong> {{ reserva.Pasajeros }}</li>
+            <li><strong>Transmisión:</strong> {{ reserva.Transmision }}</li> -->
+          </ul>
+        </div>
+
+        <!-- Datos del Cliente -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2">DATOS DEL CLIENTE</h2>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Nombre:</strong> {{ reserva.Nombre }} {{ reserva.Apellido }}</li>
+            <li><strong>Email:</strong> {{ reserva.Email }}</li>
+            <li><strong>Celular:</strong> {{ reserva.Celular }}</li>
+            <li><strong>Dirección:</strong> {{ reserva.Direccion }}</li>
+            <!-- <li><strong>Licencia:</strong> {{ reserva.NumeroLicencia }}</li> -->
+          </ul>
+        </div>
+
+        <!-- Información de la Reserva -->
+        <div>
+          <h2 class="text-lg font-semibold mb-2">INFORMACIÓN</h2>
+          <ul class="text-gray-700 space-y-1">
+            <li><strong>Total a Pagar:</strong> {{ reserva.PagoTotal | currency }}</li>
+            <li><strong>Duración de la Renta:</strong></li>
+            <li>Inicio: {{ reserva.FechaInicio }}</li>
+            <li>Fin: {{ reserva.FechaFin }}</li>
+          </ul>
+        </div>
+
+        <!-- Acciones -->
+        <div class="flex flex-col items-center justify-center space-y-4">
+          <button
+            (click)="aceptarReserva(reserva)"
+            class="px-6 py-2 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 flex items-center">
+            <span>✅</span> <span class="ml-2">Aceptar</span>
+          </button>
+          <button
+            (click)="rechazarReserva(reserva.ID_Reservas)"
+            class="px-6 py-2 bg-gray-400 text-white rounded-full font-semibold hover:bg-gray-500 flex items-center">
+            <span>❌</span> <span class="ml-2">Rechazar</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

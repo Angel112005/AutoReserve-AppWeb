@@ -1,0 +1,83 @@
+<div class="flex flex-col md:flex-row h-auto">
+  <!-- Imagen de fondo en la mitad izquierda -->
+  <div class="md:w-1/2 w-full bg-cover bg-center" style="background-image: url('/assets/add-car.jpg');"></div>
+
+  <!-- Formulario en la mitad derecha -->
+  <div class="md:w-1/2 w-full flex flex-col justify-center items-center bg-white p-8 md:p-16">
+
+    <div class="flex justify-between items-center mb-8">
+      <div class="flex space-x-4">
+        <button
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+        (click)="navigateToHome()">
+        INICIO
+        </button>
+      </div>
+    </div>
+
+    <h1 class="text-4xl font-bold mb-8 text-center">AGREGAR UN NUEVO AUTO</h1>
+    
+    <form class="w-full max-w-lg space-y-6" (ngSubmit)="onSubmit()">
+
+      <!-- Marca y Modelo -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-lg font-semibold mb-1">Marca:</label>
+          <select [(ngModel)]="car.Marca" name="Marca" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black">
+            <option value="">Selecciona una marca</option>
+            <option *ngFor="let marca of marcas" [value]="marca">{{ marca }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-lg font-semibold mb-1">Modelo:</label>
+          <input type="text" [(ngModel)]="car.Modelo" name="Modelo" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black" placeholder="Modelo del vehículo...">
+        </div>
+      </div>
+
+      <!-- Año y Matrícula -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-lg font-semibold mb-1">Año del Vehículo:</label>
+          <input type="number" [(ngModel)]="car.Generacion" name="Generacion" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black" placeholder="Año del vehículo...">
+        </div>
+        <div>
+          <label class="block text-lg font-semibold mb-1">Matrícula (Placas):</label>
+          <input type="text" [(ngModel)]="car.Matricula" name="Matricula" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black" placeholder="Placas del vehículo...">
+        </div>
+      </div>
+
+      <!-- Tipo y Transmisión -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-lg font-semibold mb-1">Tipo de Vehículo:</label>
+          <select [(ngModel)]="car.Tipo" name="Tipo" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black">
+            <option value="">Selecciona el tipo...</option>
+            <option *ngFor="let tipo of tipos" [value]="tipo">{{ tipo }}</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-lg font-semibold mb-1">Transmisión:</label>
+          <select [(ngModel)]="car.Transmision" name="Transmision" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black">
+            <option value="">Selecciona el tipo...</option>
+            <option value="Manual">Manual</option>
+            <option value="Automática">Automática</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Pasajeros y Costo por Día -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-lg font-semibold mb-1">Total de Pasajeros:</label>
+          <input type="number" [(ngModel)]="car.Pasajeros" name="Pasajeros" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ingrese una cantidad...">
+        </div>
+        <div>
+          <label class="block text-lg font-semibold mb-1">Costo por Día:</label>
+          <input type="number" [(ngModel)]="car.CostoXDia" name="CostoXDia" required class="w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-black" placeholder="Ingrese una cantidad...">
+        </div>
+      </div>
+
+      <!-- Botón de Guardar -->
+      <div class="flex justify-center mt-6">
+        <button type="submit" class="w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition duration-300">GUARDAR</button>
+

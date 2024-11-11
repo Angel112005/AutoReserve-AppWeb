@@ -1,0 +1,47 @@
+<!-- src/app/client/components/client-dashboard/client-dashboard.component.html -->
+<div class="container mx-auto px-4 py-8">
+  <!-- Título y botones de navegación -->
+  <div class="flex justify-between items-center mb-8">
+    <!-- <h1 class="text-4xl font-bold">AUTOS DISPONIBLES</h1> -->
+    <div class="flex space-x-4">
+      <button
+      class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+      (click)="navigateToHome()">
+      INICIO
+      </button>
+      <button
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+        (click)="navigateTo('mis-reservas')">
+        MIS RESERVAS
+      </button>
+      <button
+        class="bg-gray-300 text-gray-700 px-4 py-2 rounded-md font-semibold"
+        (click)="navigateTo('historial')">
+        HISTORIAL
+      </button>
+    </div>
+  </div>
+
+  <h1 class="text-4xl font-bold pb-5">AUTOS DISPONIBLES</h1>
+
+
+  <!-- Lista de autos disponibles -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div
+      *ngFor="let car of cars"
+      class="bg-white border rounded-lg shadow-md p-6 text-center cursor-pointer"
+      (click)="car.ID_Auto ? goToDetail(car.ID_Auto) : null">
+
+      <h2 class="text-2xl font-semibold mb-2">{{ car?.Marca }} {{ car?.Modelo }}</h2>
+      <ul class="text-gray-700 mb-4">
+        <li>Año: {{ car?.Generacion }}</li>
+        <li>Tipo: {{ car?.Tipo }}</li>
+        <li>Pasajeros: {{ car?.Pasajeros }}</li>
+        <li>Transmisión: {{ car?.Transmision }}</li>
+      </ul>
+
+      <p class="text-3xl font-bold mb-1">${{ car?.CostoXDia }}<span class="text-base font-normal"> p/día</span></p>
+      <p class="text-sm text-gray-600">IVA incluido</p>
+    </div>
+  </div>
+</div>
