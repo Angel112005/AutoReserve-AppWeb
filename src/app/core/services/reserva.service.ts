@@ -12,7 +12,10 @@ import { map } from 'rxjs';
 
 
 export class ReservaService {
-  private baseUrl = 'http://localhost:8080/api/reservas';
+  // LOCAL
+  // private baseUrl = 'http://localhost:8080/api/reservas';
+// INSTANCIA
+  private baseUrl = 'http://54.160.234.38:8080/api/reservas';
 
   constructor(private http: HttpClient) {}
 

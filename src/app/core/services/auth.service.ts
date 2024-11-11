@@ -1,59 +1,4 @@
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Router } from '@angular/router';
-// import { Observable, of } from 'rxjs';
-// import { tap, catchError } from 'rxjs';
-// import { RegisterUser } from '../../shared/models/register-user';
-// import { UserResponse } from '../../shared/models/user-response';
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AuthService {
-//   private apiUrl = 'http://localhost:8080/api/usuarios';
-
-//   constructor(private http: HttpClient, private router: Router) {}
-
-//   // Método para registrar un nuevo usuario
-//   register(user: RegisterUser): Observable<any> {
-//     return this.http.post<any>(`${this.apiUrl}/register/`, user);
-//   }
-
-//   // Método para iniciar sesión
-//   login(email: string, password: string): Observable<UserResponse | null> {
-//     return this.http.post<UserResponse>(`${this.apiUrl}/login/`, { email, contraseña: password })
-//       .pipe(
-//         tap((user) => {
-//           if (user) {
-//             localStorage.setItem('currentUser', JSON.stringify(user));
-//             this.router.navigate([user.idRol === 1 ? '/admin' : '/client']);
-//           }
-//         }),
-//         catchError(error => {
-//           console.error('Error en inicio de sesión', error);
-//           return of(null);
-//         })
-//       );
-//   }
-
-//   // Obtener el usuario actual
-//   getCurrentUser(): UserResponse | null {
-//     const user = localStorage.getItem('currentUser');
-//     return user ? JSON.parse(user) : null;
-//   }
-
-//   // Cerrar sesión
-//   logout(): void {
-//     localStorage.removeItem('currentUser');
-//     this.router.navigate(['/auth/login']);
-//   }
-
-//   // Verificar si el usuario actual es admin
-//   isAdmin(): boolean {
-//     const user = this.getCurrentUser();
-//     return user?.idRol === 1;
-//   }
-// }
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -70,7 +15,10 @@ import { UserResponse } from '../../shared/models/user-response';
 })
 
 export class AuthService {
-  private baseUrl = 'http://localhost:8080/api/usuarios';
+  // LOCAL
+// private baseUrl = 'http://localhost:8080/api/usuarios';
+  // INSTANCIA
+  private baseUrl = 'http://54.160.234.38:8080/api/usuarios';
 
   constructor(private http: HttpClient, private router: Router) {}
 

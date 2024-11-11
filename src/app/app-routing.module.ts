@@ -6,14 +6,11 @@ import { RegisterComponent } from './auth/components/register/register.component
 // COMPONENTES CLIENTE
 import { ClientDashboardComponent } from './client/components/client-dashboard/client-dashboard.component';
 import { HistorialClienteComponent } from './client/components/historial-cliente/historial-cliente.component';
-// import { MisReservasComponent } from './client/components/mis-reservas/mis-reservas.component';
 import { ClientReservasComponent } from './client/components/client-reservas/client-reservas.component';
 // COMPONENTES ADMIN
 import { CarListComponent } from './admin/components/car-list/car-list.component';
 import { AddCarComponent } from './admin/components/add-car/add-car.component';
 import { EditCarComponent } from './admin/components/edit-car/edit-car.component';
-// import { HistorialComponent } from './admin/components/historial/historial.component';
-// import { ReservasComponent } from './admin/components/admin-reservas/reservas.component';
 import { CarDetailComponent } from './client/components/car-detail/car-detail.component';
 import { AdminReservasComponent } from './admin/components/reservas/admin-reservas.component';
 
