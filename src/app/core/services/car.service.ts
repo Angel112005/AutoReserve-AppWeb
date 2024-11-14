@@ -8,9 +8,7 @@ import { Car } from '../../shared/models/car';
   providedIn: 'root'
 })
 export class CarService {
-// LOCAL
-  // private apiUrl = 'http://localhost:8080/api/autos';
-// INSTANCIA
+
   private apiUrl = 'http://54.160.234.38:8080/api/autos';
 
 

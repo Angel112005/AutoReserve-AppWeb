@@ -15,9 +15,7 @@ import { UserResponse } from '../../shared/models/user-response';
 })
 
 export class AuthService {
-  // LOCAL
-// private baseUrl = 'http://localhost:8080/api/usuarios';
-  // INSTANCIA
+  
   private baseUrl = 'http://54.160.234.38:8080/api/usuarios';
 
   constructor(private http: HttpClient, private router: Router) {}
